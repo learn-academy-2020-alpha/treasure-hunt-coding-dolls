@@ -29,13 +29,15 @@ class Board extends Component{
       this.setState({newBoard:bomb});
       this.setState({message: "Bombed! x__x"})
           // alert()
-  }
+    }
+    else if (count === 0) {
+      this.setState({message: "You ran out of tries!"})
+    }
     else {
       newBoard[index] = tree
       this.setState ({newBoard: tree});
     }
-    this.setState({counter:count})
-
+      this.setState({counter:count});
   }
 
 
