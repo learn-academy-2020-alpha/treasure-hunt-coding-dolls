@@ -5,42 +5,63 @@ class Board extends Component{
   constructor(props){
     super(props)
     this.state = {
-      board: ["⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️"]
+      board: ["⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️"],
+      treasureLoc: Math.floor(Math.random() * 9),
+      bombLoc: Math.floor(Math.random() * 9),
+      treasure: "💰",
+      tree: "🌲",
+      bomb: "💣",
+      counter: 5,
+      message:""
     }
   }
 
-  indexGrabber = (index) => {
-    let { board } = this.state;
-    // when a square is clicked, a tree/treasure/bomb icon appears
-    // randomize number
-    let ranNum = Math.floor(Math.random() * board.length);
-
-  //create a new array with all possible icons. ex. 7 trees & 1 treasure chest & 1 bomb.
-  
-  //upon click, trigger math.random to choose an index number which corrosponds to a value in allIconArray
-
-
-    let newBoard = this.state.board[index];
-    this.state.board[index] = "🌲";
-    this.setState({ newBoard: "🌲" })
+  indexLocation = (index, count) => {
+    let { board, treasureLoc, treasure, bombLoc, bomb, tree, message  } =  this.state;
+      let newBoard = board;
+    if (treasureLoc === index) {
+      newBoard[treasureLoc] = treasure
+      this.setState({newBoard: treasure});
+      this.setState({message: "You won!! $$$$"})
+    }
+    else if (bombLoc === index) {
+      newBoard[bombLoc] = bomb
+      this.setState({newBoard:bomb});
+      this.setState({message: "Bombed! x__x"})
+          // alert()
+  }
+    else {
+      newBoard[index] = tree
+      this.setState ({newBoard: tree});
+    }
+    this.setState({counter:count})
 
   }
+
 
   render(){
     let square = this.state.board.map((value, index) => {
       return(
         <Square
-          indexGrabber={ this.indexGrabber }
+          indexLocation={ this.indexLocation }
           key={ index }
           index={ index }
           value={ value }
-          placeholder={""}
+          counter={this.state.counter}
+          message = {this.state.message}
         />
       )
-    })
+    });
+
     return(
-      <div id="board">
-        { square }
+      <div>
+        <h3> Counter : {this.state.counter} </h3>
+        <div id="board">
+          { square }
+        </div>
+        <div>
+        <h2> {this.state.message}</h2>
+        </div>
       </div>
     )
   }

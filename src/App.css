@@ -14,3 +14,7 @@
   border: solid 2px black;
   margin: 2px;
 }
+
+#treasure::before {
+  content: "💰";
+}
