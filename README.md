@@ -1,5 +1,18 @@
 # React Treasure Hunt
 
+Treasure Hunt was built using React. The game contains styling with CSS elements.
+
+## Installation
+
+1. Open terminal/command prompt & git clone the repository onto your hard drive.
+2. Download https://nodejs.org/en/download/ if not already installed.
+3. Open terminal & CD into the directory where your files have been cloned
+4. Once you are in the treasure-hunt-coding-dolls directory:
+For mac:
+Type yarn,*enter* then yarn start *enter*,
+For windows:
+Type npm start *enter*
+
 ## The Setup:
 - 3 components
     - App.js
@@ -11,10 +24,6 @@
     this.state = { spaces: [0, 0, 0, 0, 0, 0, 0, 0, 0] }
     ```
 
-## Remember:
-- Pseudocode!!
-- Ask clarifying questions
-
 ## User Stories
 - As a player, I can see a web page with a 3 by 3 grid board game with question marks in each square
 - As a player, when I click on one of the question marks, an alert appears with the id of the position in the grid
@@ -24,10 +33,10 @@
 - As a player, I can see a “win” or “lose” message when the game is won or lost
 - As a player, I can click on a “Play Again” button to restart the game
 
-## Stretch
-- As a player, I can click on the question marks and behind one of the question marks is a bomb icon and an alert appears with the text “You Lose"
-- As a player, I can play a 25 square game with three bombs
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-# How to Use this Repo
+Please make sure to update tests as appropriate.
 
-When your team is ready to begin coding, open this project in Atom and edit it directly. Remember to add and commit regularly and, at the end of the project day, be sure to push your changes to Github.
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
