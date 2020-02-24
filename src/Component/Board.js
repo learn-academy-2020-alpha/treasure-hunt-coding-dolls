@@ -64,13 +64,13 @@ class Board extends Component{
 
     return(
       <div>
-        <h2> Counter : {this.state.counter} </h2>
+        <h2 id="counter" className="shadow"> Counter : {this.state.counter} </h2>
         <div id="board">
           { square }
         </div>
         <div>
         <button onClick={this.resetGame}>Reset Game</button>
-        <h2> {this.state.message}</h2>
+        <h2 id="message"> {this.state.message}</h2>
         </div>
       </div>
     )

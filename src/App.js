@@ -6,8 +6,9 @@ class App extends Component {
   render() {
     return (
       <div id="container">
-        <h1> Treasure Hunt Game </h1>
+        <h1 className="shadow"> Treasure Hunt Game </h1>
           <Board />
+        <footer> A Coding Dolls Production © 2020 </footer>  
       </div>
     );
   }

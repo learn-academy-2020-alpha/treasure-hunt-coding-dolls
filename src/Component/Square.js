@@ -7,7 +7,6 @@ class Square extends Component {
       isclicked: "false",
     }
   }
-
   handleClick = () => {
     let count = this.props.counter; // 5
 
