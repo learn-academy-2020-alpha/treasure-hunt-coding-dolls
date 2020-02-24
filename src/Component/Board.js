@@ -5,11 +5,11 @@ class Board extends Component{
   constructor(props){
     super(props)
     this.state = {
-      board: ["⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️", "⭐️"],
+      board: ["⚓️", "⚓️", "⚓️", "⚓️", "⚓️", "⚓️", "⚓️", "⚓️", "⚓️"],
       treasureLoc: Math.floor(Math.random() * 9),
       bombLoc: Math.floor(Math.random() * 9),
       treasure: "💰",
-      tree: "🌲",
+      tree: "🌊",
       bomb: "💣",
       counter: 5,
       message:""
@@ -18,26 +18,33 @@ class Board extends Component{
 
   indexLocation = (index, count) => {
     let { board, treasureLoc, treasure, bombLoc, bomb, tree, message  } =  this.state;
-      let newBoard = board;
+    let newBoard = board;
+    console.log(treasureLoc, bombLoc);
     if (treasureLoc === index) {
       newBoard[treasureLoc] = treasure
-      this.setState({newBoard: treasure});
-      this.setState({message: "You won!! $$$$"})
+      this.setState({board: newBoard});
+      this.setState({message: "You won!! $$$$"});
+      setTimeout(() => window.location.reload(), 1500);
     }
     else if (bombLoc === index) {
       newBoard[bombLoc] = bomb
-      this.setState({newBoard:bomb});
-      this.setState({message: "Bombed! x__x"})
-          // alert()
+      this.setState({board:newBoard});
+      this.setState({message: "Bombed! x__x"});
+      setTimeout(() => window.location.reload(), 1500);
     }
     else if (count === 0) {
-      this.setState({message: "You ran out of tries!"})
+      this.setState({message: "You ran out of tries!"});
+      setTimeout(() => window.location.reload(), 1500);
     }
     else {
       newBoard[index] = tree
-      this.setState ({newBoard: tree});
+      this.setState ({board: newBoard});
     }
       this.setState({counter:count});
+  }
+
+  resetGame = () => {
+    window.location.reload();
   }
 
 
@@ -57,11 +64,12 @@ class Board extends Component{
 
     return(
       <div>
-        <h3> Counter : {this.state.counter} </h3>
+        <h2> Counter : {this.state.counter} </h2>
         <div id="board">
           { square }
         </div>
         <div>
+        <button onClick={this.resetGame}>Reset Game</button>
         <h2> {this.state.message}</h2>
         </div>
       </div>
